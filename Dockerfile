@@ -36,5 +36,4 @@ RUN git clone https://github.com/klee/klee.git && cd klee && mkdir build && cd b
 # LLVM ERROR: Cannot lower a call to a non-intrinsic function 'llvm.experimental.noalias.scope.decl'!
 RUN rustup default 1.51.0
 
-RUN mkdir klee-example
-COPY --chown=${USERNAME} klee-example klee-example
+RUN git clone https://gitlab.henriktjader.com/pln/cargo-klee.git && cd cargo-klee && cargo install --path cargo-klee

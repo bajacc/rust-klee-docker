@@ -24,13 +24,13 @@ you can test klee with `klee-example`:
 Go to `klee-example`:
 
 ```bash
-cd klee-example
+cd cargo-klee/klee-examples
 ```
 
 Compile to `llvm-ir` (you can also compile to `llvm-bc`)
 
 ```bash
-cargo rustc -v --example get_sign --color=always -- -C linker=true -C lto --emit=llvm-ir
+cargo rustc -v --features klee-analysis --example get_sign --color=always -- -C linker=true -C lto --emit=llvm-ir
 ```
 
 Run klee on the `.ll` file
@@ -50,9 +50,13 @@ KLEE: done: partially completed paths = 0
 KLEE: done: generated tests = 3
 ```
 
+alternatively you can use:
+```bash
+cargo klee --example get_sign
+```
+
 ## future work
 
-Use `klee_sys` / `klee_rs` instead of explicit KLEE bindings
-Use `cargo-klee` to have an easier command line interface (it is on gitlab, but the repo seems to be unaccessible since yesterday :/)
+Find a way to insert this docker in the general workflow of `doge-home`
 
 
