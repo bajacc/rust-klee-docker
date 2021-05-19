@@ -29,10 +29,13 @@ RUN groupadd --gid=${USER_GID} ${USERNAME} && \
 USER ${USERNAME}
 WORKDIR ${USER_HOME}
 
+# You can use the following lines to install klee with a compatible rust version on your machine
+# Current LLVM version: 11.1.0
+
 RUN git clone https://github.com/klee/klee.git && cd klee && mkdir build && cd build && \
 	cmake .. && make -j 12 && sudo make install
 
-# with version 1.52.0 (current): when using klee target/debug/examples/get_sign*.ll
+# With version 1.52.0 (current): when using klee target/debug/examples/get_sign*.ll
 # LLVM ERROR: Cannot lower a call to a non-intrinsic function 'llvm.experimental.noalias.scope.decl'!
 RUN rustup default 1.51.0
 
