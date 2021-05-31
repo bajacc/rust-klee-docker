@@ -19,6 +19,8 @@ docker run --rm -it rkd
 
 ## How to use 
 
+### Using rustc and klee
+
 you can test klee with `klee-example`:
 
 Go to `klee-example`:
@@ -33,7 +35,7 @@ Compile to `llvm-ir` (you can also compile to `llvm-bc`)
 cargo rustc -v --features klee-analysis --example get_sign --color=always -- -C linker=true -C lto --emit=llvm-ir
 ```
 
-Run klee on the `.ll` file
+Run klee on the `.ll` file (or `.bc` file if you used `llvm-bc`)
 
 ```bash
 klee target/debug/examples/get_sign*.ll
@@ -50,13 +52,20 @@ KLEE: done: partially completed paths = 0
 KLEE: done: generated tests = 3
 ```
 
-alternatively you can use:
+### Using cargo-klee
+
 ```bash
 cargo klee --example get_sign
 ```
 
-## future work
+## Version
 
-Find a way to insert this docker in the general workflow of `doge-home`
+rustup: `1.51.0`
+klee: `2.2`
+LLVM: `11.1.0`
 
+## Credit
 
+Thanks `henriktjader` for:
+* `cargo klee`: <https://gitlab.henriktjader.com/pln/cargo-klee>
+* `klee_tutorial`: <https://gitlab.henriktjader.com/pln/klee_tutorial>
