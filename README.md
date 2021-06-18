@@ -62,7 +62,7 @@ cargo klee --example get_sign
 
 rustup: `1.51.0`
 klee: `2.2`
-LLVM: `11.1.0`
+LLVM: `10.0.0` 
 
 ## Credit
 
